@@ -5,21 +5,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clint's Truth Drop</title>
   <style>
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red; }
+      20% { text-shadow: -2px 0 blue; }
+      40% { text-shadow: 2px 2px lime; }
+      60% { text-shadow: -1px -1px red; }
+      80% { text-shadow: 1px 1px blue; }
+      100% { text-shadow: none; }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      45% { opacity: 0.8; }
+      55% { opacity: 0.3; }
+      70% { opacity: 0.9; }
+    }
+
+    @keyframes scanlines {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100px; }
+    }
+
     body {
       margin: 0;
       background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 255, 0, 0.05),
+        rgba(0, 255, 0, 0.05) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      animation: flicker 5s infinite, scanlines 1s linear infinite;
+      color: #0f0;
+      font-family: monospace;
+      padding: 2rem;
     }
-    img {
-      max-width: 90%;
-      max-height: 90%;
+
+    .log-block {
+      margin-bottom: 3rem;
+      border: 1px solid #0f02;
+      padding: 1rem;
+      background-color: rgba(0, 255, 0, 0.05);
+    }
+
+    .corrupt {
+      color: #500;
+    }
+
+    .hidden-deep {
+      display: none;
+    }
+
+    h1, h2, h3, code {
+      animation: glitch 2s infinite;
+    }
+
+    .loading-bar {
+      width: 100%;
+      height: 10px;
+      background: #030;
+      overflow: hidden;
+      margin: 1rem 0;
+      position: relative;
+    }
+
+    .loading-bar::before {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      background: lime;
+      animation: load 3s linear infinite;
+    }
+
+    @keyframes load {
+      0% { left: -40%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
   </style>
 </head>
 <body>
-  <img src="New Project.bmp" alt="Clue">
+  <h1>=== BioTechnica System Archive ===</h1>
+  <div class="loading-bar"></div>
+
+  <div class="log-block">
+    <h2>Log File [BTECH-SRV-A01] - 10/12/2045</h2>
+    <p>ACCESS: RESTRICTED | AUTHLEVEL: MATTHIEU</p>
+    <p>Corrupted packet chain detected. Reinitializing checksum. Refer to [SYS-MEM-ALT].</p>
+    <!-- Noise:: <span class="corrupt">wWlNRnloVHRyb3V0aGZpbmVwYXRoL25vbmU=</span> -->
+    <div>
+      <h3>Internal Memo</h3>
+      <p>"Regarding Project ONYX, phase shift anomalies appear at .632s intervals. Calibration will proceed at next cycle."</p>
+    </div>
+  </div>
+
+  <div class="log-block">
+    <h2>Log File [BTECH-SRV-A29] - 11/14/2045</h2>
+    <p>NETWORK FAILED: node_A13, node_B22, node_X99</p>
+    <p class="corrupt">!!! MEMORY DUMP: zXcvMDAxREYxIFdBUk5JTkc=</p>
+    <!-- Checksum OK, redirect code below -->
+    <div>
+      <details>
+        <summary>**DEBUG SUBPROCESS**</summary>
+        <ul>
+          <li>Instruction: retry auth loop</li>
+          <li>Status: ✖ kernel panic</li>
+          <li>Note: CHECK <code>/mnt/sysfork/deeptrace.img</code></li>
+          <li><!--base64_marker: VkVSWUdPT0Q=--></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="log-block">
+    <h2>Log File [BTECH-AI-CORRUPT] - UNKNOWN DATE</h2>
+    <p>Subprocess recompiled manually by [UNKNOWN].</p>
+    <p>ERROR: message offset...</p>
+    <div>
+      <p>Symbol Table: <code>∑⊗πΩψλγ∂ξ</code></p>
+      <!--
+      LEVEL 1 FALSE FLAG: Zmxhc2hmb3J3YXJkaW5nY2FjaGV3YXJu
+      LEVEL 2 FALSE FLAG: 01001101 01000001 01011001 01000100 01000001 01011001
+      -->
+      <div class="hidden-deep">
+        <!-- !REAL_PAYLOAD!: VHJ1dGhJbkdsaXRjaGVzQ2FuU2V0WW91RnJlZQ== -->
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 50rem; text-align: center;">[END OF LINE]</p>
 </body>
 </html>
