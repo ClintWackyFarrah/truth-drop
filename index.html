@@ -150,6 +150,14 @@
   const jumpscare = document.getElementById("jumpscare");
   const scream = document.getElementById("screamsound");
 
+  // Function to dismiss the jumpscare and stop sound
+  function dismissJumpscare() {
+    jumpscare.style.display = "none";
+    scream.pause();
+    scream.currentTime = 0;
+  }
+
+  // Trigger jumpscare on interaction
   endOfLine.addEventListener("click", () => {
     if (jumpscare.style.display !== "flex") {
       jumpscare.style.display = "flex";
@@ -158,13 +166,11 @@
     }
   });
 
-  // Auto-dismiss once sound ends
-  scream.addEventListener("click", () => {
-    jumpscare.style.display = "none";
-  });
-  scream.addEventListener("ended", () => {
-    jumpscare.style.display = "none";
-  });
+  // Dismiss on sound end
+  scream.addEventListener("ended", dismissJumpscare);
+
+  // Dismiss on any click during jumpscare
+  jumpscare.addEventListener("click", dismissJumpscare);
 </script>
   
 </body>
