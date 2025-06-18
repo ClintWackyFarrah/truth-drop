@@ -135,33 +135,31 @@
         <!-- !Patrick Swayze was here!: VHJ1dGhJbkdsaXRjaGVzQ2FuU2V0WW91RnJlZQ== -->
       </div>
     </div>
-  </div>
-
-  <p style="margin-top: 100rem; text-align: center;">[END OF LINE]</p>
-<!-- PLACE THIS RIGHT BEFORE </body> -->
-<p id="endOfLine" style="margin-top: 100rem; text-align: center; cursor: pointer;">[END OF LINE]</p>
-
-<div id="jumpscare" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; justify-content:center; align-items:center; z-index:9999;">
-  <img src="jumpscare.png" alt="Jump Scare" style="max-width:100%; max-height:100%;">
-</div>
-
-<audio id="screamsound" src="scream.wav" preload="auto"></audio>
-
-<script>
-  const endOfLine = document.getElementById("endOfLine");
-  const jumpscare = document.getElementById("jumpscare");
-  const scream = document.getElementById("screamsound");
-
-  endOfLine.addEventListener("mouseenter", () => {
-    jumpscare.style.display = "flex";
-    scream.currentTime = 0;
-    scream.play();
-  });
-
-  jumpscare.addEventListener("click", () => {
-    jumpscare.style.display = "none";
-  });
-</script>
-
+  </div> 
+    <!-- PLACE THIS RIGHT BEFORE </body> -->
+    <p id="endOfLine" style="margin-top: 100rem; text-align: center; cursor: pointer;">[END OF LINE]</p>
+    
+    <div id="jumpscare" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:black; justify-content:center; align-items:center; z-index:9999;">
+      <img src="jumpscare.png" alt="Jump Scare" style="max-width:100%; max-height:100%;">
+    </div>
+    
+    <audio id="screamsound" src="scream.wav" preload="auto"></audio>
+    
+    <script>
+      const endOfLine = document.getElementById("endOfLine");
+      const jumpscare = document.getElementById("jumpscare");
+      const scream = document.getElementById("screamsound");
+    
+      endOfLine.addEventListener("mouseenter", () => {
+        jumpscare.style.display = "flex";
+        scream.currentTime = 0;
+        scream.play();
+      });
+    
+      jumpscare.addEventListener("click", () => {
+        jumpscare.style.display = "none";
+      });
+    </script>
+  
 </body>
 </html>
