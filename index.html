@@ -159,6 +159,9 @@
   });
 
   // Auto-dismiss once sound ends
+  scream.addEventListener("click", () => {
+    jumpscare.style.display = "none";
+  });
   scream.addEventListener("ended", () => {
     jumpscare.style.display = "none";
   });
